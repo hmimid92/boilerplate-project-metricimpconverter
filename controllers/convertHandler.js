@@ -21,28 +21,48 @@ if(result2.filter(el => el === '/').length > 1) {
   };
   
   this.getUnit = function(input) {
-    let result = input.split('').filter(el => /[a-zA-Z]/.test(el));
+    let result = input.split('').filter(el => /[a-zA-Z]/.test(el)).join('');
     return result;
   };
   
   this.getReturnUnit = function(initUnit) {
-    let result = initUnit.join('');
+    
+    let result;
+    switch(initUnit) {
+       case 'L': result = 'gal';
+       break;
+       case 'gal': result = 'L';
+       break;
+       case 'km': result = 'mi';
+       break;
+       case 'mi': result = 'km';
+       break;
+       case 'lbs': result = 'kg';
+       break;
+       case 'kg': result = 'lbs';
+       break;
+       default: result = 'invalid unit';
+    }
     
     return result;
   };
 
   this.spellOutUnit = function(unit) {
-    const units = ['l','gal','km','mi','lbs','kg'];
-
-    let result;
-    if(!units.includes(unit.split('').map(el => el.toLowerCase()).join(''))) {
-      result = 'invalid unit';
-    }  
-
-    if(result === 'l') {
-      result = 'L';
-    }
-    
+    switch(unit.toLowerCase()) {
+      case 'l': result = 'litres';
+      break;
+      case 'gal': result = 'galons';
+      break;
+      case 'km': result = 'kilometers';
+      break;
+      case 'mi': result = 'miles';
+      break;
+      case 'lbs': result = 'pounds';
+      break;
+      case 'kg': result = 'kilograms';
+      break;
+      default: console.log('invalid unit')
+   }
     return result;
   };
   
