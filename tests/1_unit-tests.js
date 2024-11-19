@@ -42,7 +42,7 @@ suite('Unit Tests', function(){
     assert.equal(convertHandler.getReturnUnit('dsdw'),'invalid unit',"return an error for an invalid input unit");
   });
   test("return the spelled-out string unit for each valid input unit", function() {
-    assert.sameMembers(readReturnSpellUnit(['l','gal','km','mi','lbs','kg']),['litres','galons','kilometers','miles','pounds','kilograms'],"spelled-out string unit correct");
+    assert.sameMembers(readReturnSpellUnit(['l','gal','km','mi','lbs','kg']),['liters','gallons','kilometers','miles','pounds','kilograms'],"spelled-out string unit correct");
   });
   test("correctly convert gal to L", function() {
     assert.equal(convertHandler.convert(1,'gal'),3.78541,"correctly convert gal to L");

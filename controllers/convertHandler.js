@@ -67,9 +67,9 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     switch(unit.toLowerCase()) {
-      case 'l': result = 'litres';
+      case 'l': result = 'liters';
       break;
-      case 'gal': result = 'galons';
+      case 'gal': result = 'gallons';
       break;
       case 'km': result = 'kilometers';
       break;
