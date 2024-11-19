@@ -87,9 +87,9 @@ if(result2.filter(el => el === '/').length > 1) {
     const miToKm = 1.60934;
     let result;
     switch(initUnit.toLowerCase()) {
-       case 'l': result = initNum / galToL;
+       case 'l': result = initNum * galToL;
        break;
-       case 'gal': result = initNum * galToL;
+       case 'gal': result = initNum / galToL;
        break;
        case 'km': result = initNum / miToKm;
        break;

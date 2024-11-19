@@ -20,8 +20,8 @@ module.exports = function (app) {
      } else {
       const returnNum = convertHandler.convert(initNum,initUnit);
       const returnUnit = convertHandler.getReturnUnit(initUnit);
-      let unitWordInit = convertHandler.spellOutUnit(initUnit);
-      let unitWordReturn = convertHandler.spellOutUnit(returnUnit);
+      const unitWordInit = convertHandler.spellOutUnit(initUnit);
+      const unitWordReturn = convertHandler.spellOutUnit(returnUnit);
 
       res.json({ 
          initNum: initNum,
