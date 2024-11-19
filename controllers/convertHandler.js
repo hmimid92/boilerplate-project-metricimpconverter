@@ -29,7 +29,7 @@ if(result2.filter(el => el === '/').length > 1) {
     
     let result;
     switch(initUnit.toLowerCase()) {
-       case 'L': result = 'gal';
+       case 'l': result = 'gal';
        break;
        case 'gal': result = 'L';
        break;
