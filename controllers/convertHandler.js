@@ -12,7 +12,7 @@ function ConvertHandler() {
      r = temp[0]/temp[1];
      } else {
      r = Number(result2.join(''));
-       if(Number.isNaN(r)) {
+       if(r === 0) {
          r = 1;
        }
      }
