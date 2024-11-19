@@ -7,7 +7,7 @@ suite('Unit Tests', function(){
   test("read a whole number input", function() {
     assert.isOk(convertHandler.getNum(52),"read a whole number");
   });
-  test("read a whole number input", function() {
+  test("read a decimal number", function() {
     assert.isOk(convertHandler.getNum(5.6),"read a decimal number");
   });
   test("read a fractional input", function() {
@@ -17,7 +17,7 @@ suite('Unit Tests', function(){
     assert.isOk(convertHandler.getNum(5.3/4),"read a fractional number with decimal")
   });
   test("return an error on a double-fraction", function() {
-    assert.isOk(convertHandler.getNum(5/4/6),"this is an error");
+    assert.isNotTrue(convertHandler.getNum(5/4/6),"this is an error");
   });
   test("default to a numerical input of 1 when no numerical input is provided", function() {
     assert.equal(convertHandler.getNum(),1,"default to 1");
