@@ -22,6 +22,21 @@ if(result2.filter(el => el === '/').length > 1) {
   
   this.getUnit = function(input) {
     let result = input.split('').filter(el => /[a-zA-Z]/.test(el)).join('');
+    switch(result.toLowerCase()) {
+      case 'l': result = 'L';
+      break;
+      case 'gal': result = 'gal';
+      break;
+      case 'km': result = 'km';
+      break;
+      case 'mi': result = 'mi';
+      break;
+      case 'lbs': result = 'lbs';
+      break;
+      case 'kg': result = 'kg';
+      break;
+      default: result = 'invalid unit';
+   }
     return result;
   };
   
@@ -90,13 +105,7 @@ if(result2.filter(el => el === '/').length > 1) {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    let result;
-    if(returnNum === 'invalid number' && returnUnit === 'invalid unit') {
-     result = 'invalid number and unit';
-    } else {
-     result = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
-    }
-    
+    let result = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
     return result;
   };
   
