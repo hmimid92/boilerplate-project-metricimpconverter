@@ -28,7 +28,7 @@ if(result2.filter(el => el === '/').length > 1) {
   this.getReturnUnit = function(initUnit) {
     
     let result;
-    switch(initUnit) {
+    switch(initUnit.toLowerCase()) {
        case 'L': result = 'gal';
        break;
        case 'gal': result = 'L';
@@ -71,8 +71,8 @@ if(result2.filter(el => el === '/').length > 1) {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result;
-    switch(initUnit) {
-      case 'L': result = initNum / galToL;
+    switch(initUnit.toLowerCase()) {
+       case 'l': result = initNum / galToL;
        break;
        case 'gal': result = initNum * galToL;
        break;
@@ -86,7 +86,6 @@ if(result2.filter(el => el === '/').length > 1) {
        break;
        default: console.log("not possible to do the conversion")
     }
-    
     return result;
   };
   
