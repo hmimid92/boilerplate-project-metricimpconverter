@@ -1,22 +1,25 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
-
-    let result2 = input.split('').filter(el => !/[a-zA-Z]/.test(el));
     let temp,r;
-   if(result2.filter(el => el === '/').length > 1) {
-     r = 'invalid number';
-   } else {
-     if(result2.includes('/')) {
-     temp = result2.join('').split('/')
-     r = temp[0]/temp[1];
-     } else {
-     r = Number(result2.join(''));
-       if(r === 0) {
-         r = 1;
-       }
-     }
-   }    
+    if(input === undefined) {
+      r = 1;
+    } else {
+      let result2 = input.toString().split('').filter(el => !/[a-zA-Z]/.test(el));
+      if(result2.filter(el => el === '/').length > 1) {
+        r = 'invalid number';
+      } else {
+        if(result2.includes('/')) {
+        temp = result2.join('').split('/')
+        r = temp[0]/temp[1];
+        } else {
+        r = Number(result2.join(''));
+          if(r === 0) {
+            r = 1;
+          }
+        }
+      }  
+    }
     return r;
   };
   
@@ -76,7 +79,7 @@ function ConvertHandler() {
       break;
       case 'kg': result = 'kilograms';
       break;
-      default: console.log('invalid unit')
+      default: result = 'invalid unit';
    }
     return result;
   };
