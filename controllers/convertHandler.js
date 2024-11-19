@@ -2,21 +2,21 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
 
-let result2 = input.split('').filter(el => !/[a-zA-Z]/.test(el));
- let temp,r;
-if(result2.filter(el => el === '/').length > 1) {
-  r = 'invalid number';
-} else {
-  if(result2.includes('/')) {
-  temp = result2.join('').split('/')
-  r = temp[0]/temp[1];
-  } else {
-  r = Number(result2[0]);
-    if(Number.isNaN(r)) {
-      r = 1;
-    }
-  }
-}    
+    let result2 = input.split('').filter(el => !/[a-zA-Z]/.test(el));
+    let temp,r;
+   if(result2.filter(el => el === '/').length > 1) {
+     r = 'invalid number';
+   } else {
+     if(result2.includes('/')) {
+     temp = result2.join('').split('/')
+     r = temp[0]/temp[1];
+     } else {
+     r = Number(result2.join(''));
+       if(Number.isNaN(r)) {
+         r = 1;
+       }
+     }
+   }    
     return r;
   };
   
@@ -87,9 +87,9 @@ if(result2.filter(el => el === '/').length > 1) {
     const miToKm = 1.60934;
     let result;
     switch(initUnit.toLowerCase()) {
-       case 'l': result = initNum * galToL;
+       case 'l': result = initNum / galToL;
        break;
-       case 'gal': result = initNum / galToL;
+       case 'gal': result = initNum * galToL;
        break;
        case 'km': result = initNum / miToKm;
        break;

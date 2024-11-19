@@ -18,7 +18,7 @@ module.exports = function (app) {
      } else if(initNum === 'invalid number' ) {
       res.json("invalid number");
      } else {
-      const returnNum = convertHandler.convert(initNum,initUnit);
+      const returnNum = Number(convertHandler.convert(initNum,initUnit).toFixed(5));
       const returnUnit = convertHandler.getReturnUnit(initUnit);
       const unitWordInit = convertHandler.spellOutUnit(initUnit);
       const unitWordReturn = convertHandler.spellOutUnit(returnUnit);
