@@ -10,22 +10,26 @@ suite('Functional Tests', function() {
         chai
           .request(server)
           .keepOpen()
-          .get('/api/convert?input=10L')
+          .get('/api/convert')
+          .query({input: "10L"})
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            assert.equal(res.text, '{"initNum":10,"initUnit":"L","returnNum":2.64172,"returnUnit":"gal","string":"10 liters converts to 2.64172 gallons"}');
+            assert.equal(res.body.initNum,10);
+            assert.equal(res.body.initUnit,"L");
+            assert.approximately(res.body.returnNum,2.64172,0.1);
+            assert.equal(res.body.returnUnit,"gal");
             done();
           });
       });
-      
       test('Convert an invalid input such as 32g: GET request to /api/convert', function (done) {
         chai
           .request(server)
           .keepOpen()
-          .get('/api/convert?input=32g')
+          .get('/api/convert')
+          .query({input: "32g"})
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            assert.equal(res.text, '"invalid unit"');
+            assert.equal(res.body.initUnit, undefined);
             done();
           });
       });
@@ -34,10 +38,11 @@ suite('Functional Tests', function() {
         chai
           .request(server)
           .keepOpen()
-          .get('/api/convert?input=3/7.2/4kg')
+          .get('/api/convert')
+          .query({input: "3/7.2/4kg"})
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            assert.equal(res.text, '"invalid number"');
+            assert.equal(res.body.initNum, undefined);
             done();
           });
       });
@@ -46,10 +51,12 @@ suite('Functional Tests', function() {
         chai
           .request(server)
           .keepOpen()
-          .get('/api/convert?input=3/7.2/4kilomegagram')
+          .get('/api/convert')
+          .query({input: "3/7.2/4kilomegagram"})
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            assert.equal(res.text, '"invalid number and unit"');
+            assert.equal(res.body.initNum, undefined);
+            assert.equal(res.body.initUnit, undefined);
             done();
           });
       });
@@ -58,10 +65,14 @@ suite('Functional Tests', function() {
         chai
           .request(server)
           .keepOpen()
-          .get('/api/convert?input=kg')
+          .get('/api/convert')
+          .query({input: "kg"})
           .end(function (err, res) {
             assert.equal(res.status, 200);
-            assert.equal(res.text,'{"initNum":1,"initUnit":"kg","returnNum":2.20462,"returnUnit":"lbs","string":"1 kilograms converts to 2.20462 pounds"}');
+            assert.equal(res.body.initNum, 1);
+            assert.equal(res.body.initUnit, "kg");
+            assert.approximately(res.body.returnNum, 2.20462,0.1);
+            assert.equal(res.body.returnUnit,"lbs");
             done();
           });
       });

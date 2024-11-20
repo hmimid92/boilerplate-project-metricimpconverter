@@ -2,12 +2,9 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     let temp,r;
-    if(input === undefined) {
-      r = 1;
-    } else {
-      let result2 = input.toString().split('').filter(el => !/[a-zA-Z]/.test(el));
+      let result2 = input.split('').filter(el => !/[a-zA-Z]/.test(el));
       if(result2.filter(el => el === '/').length > 1) {
-        r = 'invalid number';
+        //
       } else {
         if(result2.includes('/')) {
         temp = result2.join('').split('/')
@@ -19,7 +16,6 @@ function ConvertHandler() {
           }
         }
       }  
-    }
     return r;
   };
   
@@ -38,8 +34,9 @@ function ConvertHandler() {
       break;
       case 'kg': result = 'kg';
       break;
-      default: result = 'invalid unit';
+      default: result = undefined;
    }
+   
     return result;
   };
   

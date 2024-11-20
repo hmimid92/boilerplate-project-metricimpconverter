@@ -11,11 +11,11 @@ module.exports = function (app) {
         const input = req.query.input;
         const initNum = convertHandler.getNum(input);
         const initUnit = convertHandler.getUnit(input);
-    if(initUnit === "invalid unit" && initNum === 'invalid number') {
+    if(initUnit === undefined && initNum === undefined) {
       res.json("invalid number and unit");
-     } else if(initUnit === "invalid unit") {
+     } else if(initUnit === undefined) {
       res.json("invalid unit");
-     } else if(initNum === 'invalid number' ) {
+     } else if(initNum === undefined) {
       res.json("invalid number");
      } else {
       const returnNum = Number(convertHandler.convert(initNum,initUnit).toFixed(5));
